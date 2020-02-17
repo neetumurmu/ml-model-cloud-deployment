@@ -9,11 +9,11 @@ from setuptools import find_packages, setup
 
 
 # Package meta-data.
-NAME = 'classification_model'
-DESCRIPTION = 'Train and deploy regression model.'
-URL = 'your github project'
-EMAIL = 'your_email@email.com'
-AUTHOR = 'Your name'
+NAME = 'classification_model_nm19'
+DESCRIPTION = 'Train and deploy classification model.'
+URL = 'https://github.com/neetumurmu'
+EMAIL = 'user@email.com'
+AUTHOR = 'Neetu Murmu'
 REQUIRES_PYTHON = '>=3.6.0'
 
 
