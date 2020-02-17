@@ -7,6 +7,7 @@ joblib==0.14.1
 # packaging
 setuptools==40.6.3
 wheel==0.32.3
+twine
 
 # testing requirements
 pytest>=4.6.6,<5.0.0
