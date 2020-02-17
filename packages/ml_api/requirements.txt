@@ -1,0 +1,8 @@
+# api
+flask==1.0.2
+
+# add marshmallow
+
+# local regression_model package
+# update with your local path
+-e "C:\Users\Neetu\ml-model-deployment\packages\classification_model\classification_model"
