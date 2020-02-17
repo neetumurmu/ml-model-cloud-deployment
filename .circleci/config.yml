@@ -14,7 +14,9 @@ jobs:
             pip install --upgrade pip
             pip install -r packages/classification_model/requirements.txt
             chmod +x ./scripts/fetch_kaggle_dataset.sh
+            chmod +x ./scripts/unzip_file.sh
             ./scripts/fetch_kaggle_dataset.sh
+            ./scripts/unzip_file.sh
             PYTHONPATH=./packages/classification_model
             py.test -vv packages/classification_model/tests
 
