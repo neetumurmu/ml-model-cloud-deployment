@@ -18,7 +18,7 @@ clf_pipe = load_pipeline(file_name=pipeline_file_name)
 def make_prediction(*, input_data):
 	# input_data should be changed
 
-	data = pd.read_json(input_data)
+	data = pd.DataFrame(input_data)
 
 	prediction = clf_pipe.predict(data[config.FEATURES])
 
