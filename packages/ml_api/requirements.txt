@@ -8,4 +8,4 @@ gunicorn
 marshmallow==2.17.0
 
 # Install from Test PyPI
-classification-model-nm19
+classification_model_nm19

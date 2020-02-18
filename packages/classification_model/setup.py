@@ -10,7 +10,7 @@ from setuptools import find_packages, setup
 
 # Package meta-data.
 NAME = 'classification_model_nm19'
-DESCRIPTION = 'Train and deploy classification model.'
+DESCRIPTION = 'Forest cover type classification model.'
 URL = 'https://github.com/neetumurmu'
 EMAIL = 'user@email.com'
 AUTHOR = 'Neetu Murmu'
@@ -61,7 +61,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude=('tests',)),
-    package_data={'regression_model': ['VERSION']},
+    package_data={'classification_model': ['VERSION']},
     install_requires=list_reqs(),
     extras_require={},
     include_package_data=True,
