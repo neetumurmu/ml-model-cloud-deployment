@@ -9,7 +9,7 @@ from setuptools import find_packages, setup
 
 
 # Package meta-data.
-NAME = 'classification_model_nm19'
+NAME = 'forest_cover_classification'
 DESCRIPTION = 'Forest cover type classification model.'
 URL = 'https://github.com/neetumurmu'
 EMAIL = 'user@email.com'
