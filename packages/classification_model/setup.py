@@ -9,11 +9,11 @@ from setuptools import find_packages, setup
 
 
 # Package meta-data.
-NAME = 'classification_model'
-DESCRIPTION = 'Train and deploy regression model.'
-URL = 'your github project'
-EMAIL = 'your_email@email.com'
-AUTHOR = 'Your name'
+NAME = 'forest_cover_classification'
+DESCRIPTION = 'Forest cover type classification model.'
+URL = 'https://github.com/neetumurmu'
+EMAIL = 'user@email.com'
+AUTHOR = 'Neetu Murmu'
 REQUIRES_PYTHON = '>=3.6.0'
 
 
@@ -42,7 +42,7 @@ except FileNotFoundError:
 
 # Load the package's __version__.py module as a dictionary.
 ROOT_DIR = Path(__file__).resolve().parent
-PACKAGE_DIR = ROOT_DIR / NAME
+PACKAGE_DIR = ROOT_DIR / 'classification_model'
 about = {}
 with open(PACKAGE_DIR / 'VERSION') as f:
     _version = f.read().strip()
@@ -53,6 +53,7 @@ with open(PACKAGE_DIR / 'VERSION') as f:
 setup(
     name=NAME,
     version=about['__version__'],
+    py_modules=['classification_model'],
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -61,7 +62,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude=('tests',)),
-    package_data={'regression_model': ['VERSION']},
+    package_data={'classification_model': ['VERSION']},
     install_requires=list_reqs(),
     extras_require={},
     include_package_data=True,
