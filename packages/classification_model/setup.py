@@ -53,6 +53,7 @@ with open(PACKAGE_DIR / 'VERSION') as f:
 setup(
     name=NAME,
     version=about['__version__'],
+    py_modules=['classification_model'],
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
