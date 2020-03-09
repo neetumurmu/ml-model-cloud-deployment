@@ -55,7 +55,7 @@ with open(PACKAGE_DIR / 'VERSION') as f:
 setup(
     name=NAME,
     version=about['__version__'],
-    package_dir = {'': 'packages/classification_model'},
+    # package_dir = {'': 'packages/classification_model'},
     packages=[
     'classification_model', 
     'classification_model.config',
