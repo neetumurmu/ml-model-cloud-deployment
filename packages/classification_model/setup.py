@@ -16,6 +16,8 @@ EMAIL = 'user@email.com'
 AUTHOR = 'Neetu Murmu'
 REQUIRES_PYTHON = '>=3.6.0'
 
+long_description = DESCRIPTION
+
 
 # What packages are required for this module to be executed?
 def list_reqs(fname='requirements.txt'):
@@ -53,19 +55,26 @@ with open(PACKAGE_DIR / 'VERSION') as f:
 setup(
     name=NAME,
     version=about['__version__'],
-    py_modules=['classification_model'],
+    package_dir = {'': 'packages/classification_model'},
+    packages=[
+    'classification_model', 
+    'classification_model.config',
+    'classification_model.datasets',
+    'classification_model.processing',
+    'classification_model.trained_models'],
+
     description=DESCRIPTION,
     long_description=long_description,
     long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=EMAIL,
-    python_requires=REQUIRES_PYTHON,
+    # python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=find_packages(exclude=('tests',)),
-    package_data={'classification_model': ['VERSION']},
+    # packages=find_packages(exclude=('tests',)),
+    # package_data={'classification_model': ['VERSION']},
     install_requires=list_reqs(),
     extras_require={},
-    include_package_data=True,
+    # include_package_data=True,
     license='MIT',
     classifiers=[
         # Trove classifiers
