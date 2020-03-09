@@ -25,7 +25,7 @@ def save_pipeline(pipeline_to_save):
 	# remove old pipeline if there is any
 	remove_old_pipelines(files_to_keep=save_file_name)
 	joblib.dump(pipeline_to_save, save_path)
-	_logger.info(f'saved pipeline : {save_file_name}')
+	_logger.info(f'saved pipeline : {save_path}')
 
 
 def load_pipeline(file_name):
