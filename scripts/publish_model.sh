@@ -28,6 +28,8 @@ build() {
     [ ! -e $SETUP ] && warn "No $SETUP file, skipping" && return
     PACKAGE_NAME=$(python $SETUP --fullname)
     echo "Package $PACKAGE_NAME"
+    BASE_DIR=$(pwd)
+    echo "BASE DIRECTORY is $BASE_DIR"
     python "$SETUP" sdist bdist_wheel || die "Building package $PACKAGE_NAME failed"
     python -m twine upload --repository-url https://test.pypi.org/legacy/ -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*
 }
