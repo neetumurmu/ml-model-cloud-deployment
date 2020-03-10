@@ -1,6 +1,7 @@
 import pandas as pd
 import joblib
 from sklearn.pipeline import Pipeline 
+import os
 
 from classification_model.config import config
 from classification_model import __version__ as _version # check this later
@@ -29,6 +30,9 @@ def save_pipeline(pipeline_to_save):
 
 
 def load_pipeline(file_name):
+	# this_dir, this_filename = os.path.split(__file__)
+	# file_path = os.path.join(config.TRAINED_MODEL_DIR, file_name)
+
 	file_path = config.TRAINED_MODEL_DIR / file_name
 	trained_model = joblib.load(filename=file_path)
 	return trained_model
