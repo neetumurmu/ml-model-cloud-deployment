@@ -8,6 +8,6 @@ gunicorn
 marshmallow==2.17.0
 
 # Install from Test PyPI
-forest-cover-classification
+bank-churn-prediction
 
 joblib

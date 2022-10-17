@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Building packages and uploading them to a Gemfury repository
+# Building packages and uploading them to a pypi repository
 
 PYPI_USERNAME=$PYPI_USERNAME
 PYPI_PASSWORD=$PYPI_PASSWORD

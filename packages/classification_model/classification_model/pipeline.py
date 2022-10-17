@@ -1,6 +1,8 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 from classification_model.processing import preprocessors as pp 
 from classification_model.processing import features
@@ -11,28 +13,20 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("num", StandardScaler(), config.FEATURES)
+    ]
+)
+
 clf_pipe = Pipeline(
 	[
-		# ('hydrology_features',
-		# 	features.HydrologyFeatures()),
-		# ('kernel_features',
-		# 	features.KernelFeatures()),
-		# ('scaler', MinMaxScaler()),
-		('rf_model', RandomForestClassifier(n_estimators=100, random_state=6))
+		(
+            "categorical_encoder",
+            pp.CategoricalEncoder(variables=config.CATEGORICAL_VARS),
+        ),
+		("preprocessor", preprocessor),
+		("rf_model", RandomForestClassifier(n_estimators=100, random_state=6))
 	]
 
 )
-
-
-# clf_pipe = Pipeline(
-# 	[
-# 		('aspect_binning',
-# 			features.AspectBinning()),
-# 		('hydrology_features',
-# 			features.HydrologyFeatures()),
-# 		('kernel_features',
-# 			features.KernelFeatures()),
-# 		('scaler', MinMaxScaler()),
-# 		('rf_model', RandomForestClassifier(random_state=6))
-# 	]
-# )

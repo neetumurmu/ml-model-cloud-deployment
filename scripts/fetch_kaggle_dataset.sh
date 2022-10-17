@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-kaggle competitions download -c forest-cover-type-prediction -p packages/classification_model/classification_model/datasets/
+kaggle datasets download -d gauravtopre/bank-customer-churn-dataset -p packages/classification_model/classification_model/datasets/

@@ -1,8 +1,9 @@
 import numpy as np
+import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from classification_model import pipeline
-from classification_model.processing.data_helper import (load_dataset, save_pipeline)
+from classification_model.processing.data_helper import (load_dataset, save_pipeline, save_test_data)
 from classification_model.config import config
 from classification_model import __version__ as _version 
 
@@ -21,6 +22,8 @@ def run_training():
 		data[config.TARGET],
 		test_size=0.2,
 		random_state=6)
+
+	save_test_data(X_test, y_test)
 
 	pipeline.clf_pipe.fit(X_train[config.FEATURES], y_train)
 
