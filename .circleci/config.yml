@@ -64,8 +64,8 @@ workflows:
   test-all:
     jobs:
       # - test_classification_model
-      # - test_ml_api
-      - train_and_upload_classification_model
+      - test_ml_api
+      # - train_and_upload_classification_model
       # - test_ml_api:
       #     requires:
       #       - train_and_upload_classification_model
