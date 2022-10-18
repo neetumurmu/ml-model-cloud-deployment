@@ -58,6 +58,20 @@ jobs:
             ./scripts/unzip_file.sh
             PYTHONPATH=./packages/classification_model python3 packages/classification_model/classification_model/train_pipeline.py
             ./scripts/publish_model.sh ./packages/classification_model/
+  
+  publish_docker_image_to_aws:
+    <<: *defaults
+    working_directory: ~/project/packages/ml_models
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Publishing docker image to aws ECR
+          command: |
+            sudo pip install awscli
+            aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 106740651195.dkr.ecr.us-east-2.amazonaws.com/udemy-ml-api
+            make build-ml-api-aws tag-ml-api push-ml-api-aws
+            aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --region us-east-2 --force-new-deployment
 
 workflows:
   version: 2
@@ -69,4 +83,11 @@ workflows:
       # - test_ml_api:
           # requires:
             # - train_and_upload_classification_model
+      - section_12_publish_docker_image_to_aws:
+          requires:
+            - train_and_upload_regression_model
+          filters:
+            branches:
+              only:
+                - master
 

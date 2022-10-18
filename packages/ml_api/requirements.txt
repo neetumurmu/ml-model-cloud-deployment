@@ -10,4 +10,4 @@ marshmallow==2.17.0
 # Install from Test PyPI
 bank-churn-prediction
 
-joblib>=0.14.1
+joblib==0.14.1
