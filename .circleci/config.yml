@@ -60,8 +60,9 @@ jobs:
             ./scripts/publish_model.sh ./packages/classification_model/
   
   publish_docker_image_to_aws:
-    <<: *defaults
     working_directory: ~/project/packages/ml_models
+    docker:
+      - image: circleci/python:3.7.2
     steps:
       - checkout
       - setup_remote_docker
