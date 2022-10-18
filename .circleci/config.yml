@@ -69,10 +69,10 @@ jobs:
       - run:
           name: Publishing docker image to aws ECR
           command: |
-            sudo pip install awscliv2
-            awsv2 ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-2.amazonaws.com/udemy-ml-api
+            sudo pip install awscli
+            aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-2.amazonaws.com/udemy-ml-api
             make build-ml-api-aws tag-ml-api push-ml-api-aws
-            awsv2 ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --region us-east-2 --force-new-deployment
+            aws ecs update-service --cluster ml-api-cluster --service custom-service --task-definition  first-run-task-definition --region us-east-2 --force-new-deployment
 
 workflows:
   version: 2
