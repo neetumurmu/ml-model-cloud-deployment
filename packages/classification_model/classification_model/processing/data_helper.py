@@ -43,3 +43,12 @@ def remove_old_pipelines(files_to_keep):
 	for model_file in config.TRAINED_MODEL_DIR.iterdir():
 		if model_file.name not in do_not_delete:
 			model_file.unlink()
+
+
+def save_test_data(X_test, y_test):
+	test_df = pd.concat([X_test, y_test], axis=1)
+	try:
+		test_df.to_csv(f'{config.DATASET_DIR}/{config.TESTING_DATA_FILE}', index=False)
+		_logger.info(f'file saved successfully in : {config.DATASET_DIR}/{config.TESTING_DATA_FILE}')
+	except Exception as e:
+		_logger.info(f'Error : {e}')

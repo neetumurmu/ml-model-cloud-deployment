@@ -9,8 +9,8 @@ from setuptools import find_packages, setup
 
 
 # Package meta-data.
-NAME = 'forest_cover_classification'
-DESCRIPTION = 'Forest cover type classification model.'
+NAME = 'bank-churn-prediction'
+DESCRIPTION = 'Bank churn prediction classification model.'
 URL = 'https://github.com/neetumurmu'
 EMAIL = 'user@email.com'
 AUTHOR = 'Neetu Murmu'

@@ -30,7 +30,7 @@ def test_version_endpoint_returns_version(flask_test_client):
 def test_prediction_endpoint_returns_prediction(flask_test_client):
     # Given
     test_data = load_dataset(file_name=model_config.TESTING_DATA_FILE)
-    post_json = test_data[0:1].to_json(orient='records')
+    post_json = test_data[1:2].to_json(orient='records')
     print(post_json)
     # When
     response = flask_test_client.post('/v1/predict/classification',
@@ -41,5 +41,5 @@ def test_prediction_endpoint_returns_prediction(flask_test_client):
     response_json = json.loads(response.data)
     prediction = response_json['predictions']
     response_version = response_json['version']
-    assert prediction[0] == 2
+    assert prediction[0] == 1
     assert response_version == _version
