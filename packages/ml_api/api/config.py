@@ -3,6 +3,9 @@ from logging.handlers import TimedRotatingFileHandler
 import pathlib
 import os
 import sys
+from unittest.mock import DEFAULT
+
+from classification_model.config.config import FEATURES
 
 PACKAGE_ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -13,6 +16,35 @@ LOG_DIR = PACKAGE_ROOT / 'logs'
 LOG_DIR.mkdir(exist_ok=True)
 LOG_FILE = LOG_DIR / 'ml_api.log'
 
+FEATURES = {'credit_score': 'Credit Score',
+            'country': 'Country',
+            'gender': 'Gender',
+            'age': 'Age',
+            'tenure': 'Tenure with Bank',
+            'balance': 'Current Bank Balance',
+            'products_number': 'No. of Products with Bank',
+            'credit_card': 'Credit Card from Bank',
+            'active_member': 'Active Member',
+            'estimated_salary': 'Estimated Salary'}
+
+INTEGER_FEATURES = ['age', 'tenure', 'products_number']
+
+FLOAT_FEATURES = ['credit_score', 'balance', 'estimated_salary']
+
+CATEGORICAL_FEATURES = ['country', 'gender', 'credit_card', 'active_member']
+
+DEFAULT_FEATURE_VALUES = {
+    'credit_score': [692, ""],
+    'country': ['France', ['France', 'Germany', 'Spain']],
+    'gender' : ['Female', ['Male', 'Female']],
+    'age' : [28, ''],
+    'tenure' : [8, ''],
+    'balance' : [95059, ''],
+    'products_number': [2, ''],
+    'credit_card' : ['Yes', ['Yes', 'No']],
+    'active_member' : ['No', ['Yes', 'No']],
+    'estimated_salary' : [44420, '']
+}
 
 def get_console_handler():
     console_handler = logging.StreamHandler(sys.stdout)
