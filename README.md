@@ -1,5 +1,5 @@
 # ML Model Cloud Deployment
-The project deploys a flask-based web application for a machine learning model to cloud and automates the whole process using a continuous integration tool.
+The project deploys a flask-based bank churn prediction web application to cloud and automates the whole process using a continuous integration tool.
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
