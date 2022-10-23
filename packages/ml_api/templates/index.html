@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet", href="{{ url_for('static', filename='css\main.css') }}">
+    <style>
+        .center{
+            margin: auto;
+             width:50%;
+        }
+        .field-container{
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr;
+            grid-gap: 2px;
+            margin-bottom: -25px;
+        }
+        table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+        }
+        .section-container{
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-gap: 2px;
+            margin-top: 40px;
+        }
+
+        body {
+            color: #f3faf3;
+            background: #1d1d20;
+            font-family: Verdana, sans-serif;
+        }
+        .topcorner{
+            position:absolute;
+            top:10px;
+            right:10px;
+        }
+        .about-me{
+            float:right;
+            margin-top: -15px;
+            margin-right: 35px;
+        }
+        .intro{
+            margin-left: 70px;
+            font-size: 0.9rem;
+            /* color:#066d06; */
+        }
+
+        .vl {
+            border-left: 2px solid rgb(250, 255, 250);
+            height: 105px;
+            position: absolute;
+            /* left: 10%; */
+            margin-left: 45px;
+            top: 250px;
+        }
+
+        .v2 {
+            border-left: 2px solid #f3faf3;
+            height: 670px;
+            position: absolute;
+            /* left: 10%; */
+            margin-left: 45px;
+            top: 1280px;
+        }
+
+        .v3 {
+            border-left: 2px solid #f3faf3;
+            height: 260px;
+            position: absolute;
+            /* left: 10%; */
+            margin-left: 45px;
+            top: 1280px;
+        }
+
+        .socials{
+            margin-top: 40px;
+            margin-left: 50px;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        a:active {
+            text-decoration: none;
+        }
+        .button {
+            background-color: #45a34c; /* Green */
+            border: none;
+            border-radius: 3px;
+            color: white;
+            padding: 5px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            color: black;
+            margin-top: 40px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+        <h1 style="text-align: center">Bank Churn Prediction</h1>
+
+        <div class="section-container">
+            <div class="center">
+                <form action="/" method="POST">
+                    {% for field, field_placeholder in feature_fields.items() %}
+                        {% if field in integer_features %}
+                            <div class="field-container">
+                                <div><h5>{{field_placeholder}}</h5></div>
+                                <div style="margin-top:20px;">
+                                    <input name={{field}} type="number" min="1" step="1" max="100" value={{default_feature_values[field][0]}}>
+                                </div>
+                                <div><h5>{{default_feature_values[field][1]}}</h5></div>
+                            </div>
+                        {% elif field in float_features %}
+                            <div class="field-container">
+                                <div><h5>{{field_placeholder}}</h5></div>
+                                <div style="margin-top:20px;">
+                                    <input name={{field}} type="number" value={{default_feature_values[field][0]}}>
+                                </div>
+                            </div>
+                        {% elif field in categorical_features %}
+                            <div class="field-container">
+                                <div><h5>{{field_placeholder}}</h5></div>
+                                <div style="margin-top:20px;">
+                                    <select name={{field}}>
+                                        {% for value in default_feature_values[field][1] %}
+                                            <option value={{value}}>{{value}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        {% endif %} 
+                    {% endfor %}
+                    <input class="button" type="submit" value="Predict Bank Churn">
+                </form>
+            </div>
+            <div>
+                {% if prediction_data %}
+                    <h3>Prediction Result</h3>
+                    <table>
+                        <tr>
+                            <td style="font-weight: bold;">Customer Churned</td>
+                            {% if prediction_data[1] == 'Yes' %}
+                                <td style="color:red; font-weight: bold;">{{ prediction_data[1] }}</td>
+                            {% else %}
+                                <td style="color:green; font-weight: bold;">{{ prediction_data[1] }}</td>
+                            {% endif %}
+                        </tr>
+                        {% for key, value in prediction_data[0].items() %}
+                            <tr>
+                                <td>{{ key }}</td>
+                                <td>{{ value }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+            </div>
+        </div>
+        <div class="section-container">
+            <div style="margin: auto; width: 50%;">
+                <h4>Few values to try out:</h4>
+                <ul>
+                    <li><p style="font-size:small">499,Spain,Female,53,1,75225,2,0,0,144849</p></li>
+                </ul>
+                <ul>
+                    <li><p style="font-size:small">537,France,Male,28,0,88963,2,1,1,189839</p></li>
+                </ul>
+                <ul>
+                    <li><p style="font-size:small">671,Germany,Male,51,3,96891,1,1,0,176403</p></li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-container">
+            <div style="margin: auto; width: 50%;">
+                <h4 style="color: rgb(98, 245, 98);">Tech stack used in the project:</h4>
+                <ul>
+                    <li><h5>Python</h5></li>
+                </ul>
+                <ul>
+                    <li><h5>Flask</h5></li>
+                </ul>
+                <ul>
+                    <li><h5>AWS ECR, ECS</h5></li>
+                </ul>
+                <ul>
+                    <li><h5>CircleCI</h5></li>
+                </ul>
+                <ul>
+                    <li><h5>Git</h5></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

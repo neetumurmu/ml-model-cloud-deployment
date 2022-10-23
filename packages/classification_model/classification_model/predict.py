@@ -15,10 +15,13 @@ pipeline_file_name = f'{config.PIPELINE_SAVE_FILE}{_version}.pkl'
 clf_pipe = load_pipeline(file_name=pipeline_file_name)
 
 
-def make_prediction(*, input_data):
+def make_prediction(*, input_data, index_data=False):
 	# input_data should be changed
 
-	data = pd.DataFrame(input_data)
+	if index_data:
+		data = pd.DataFrame(input_data, index=[0])
+	else:
+		data = pd.DataFrame(input_data)
 
 	prediction = clf_pipe.predict(data[config.FEATURES])
 
