@@ -1,6 +1,8 @@
 # ML Model Cloud Deployment
 The project deploys a flask-based bank churn prediction web application to cloud and automates the whole process using a continuous integration tool.
 
+## App Link - neetumurmu.github.io
+
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
